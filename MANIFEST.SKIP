@@ -1,0 +1,14 @@
+\.cvsignore
+\.releaserc
+Makefile$
+.DS_Store
+\.gz
+\.bak
+HTTP-.*
+MANIFEST\.
+blib/
+CVS
+pm_to_blib
+iterate-new.t
+Makefile.old
+t/\d

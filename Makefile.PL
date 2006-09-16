@@ -23,9 +23,9 @@ WriteMakefile(
 
 	'MAN3PODS'     => {
 		'lib/WebTools.pm'               => '$(INST_MAN3DIR)/Business::USPS::WebTools.3',
-		'lib/AddressStandardization.pm' => '$(INST_LIBDIR)/WebTools/AddressStandardization.pm',
-		'lib/ZipCodeLookup.pm'          => '$(INST_LIBDIR)/WebTools/ZipCodeLookup.pm',
-		'lib/CityStateLookup.pm'        => '$(INST_LIBDIR)/WebTools/CityStateLookup.pm',
+		'lib/AddressStandardization.pm' => '$(INST_LIBDIR)/Business::USPS::WebTools::AddressStandardization.3',
+		'lib/ZipCodeLookup.pm'          => '$(INST_LIBDIR)/Business::USPS::WebTools::ZipCodeLookup.3',
+		'lib/CityStateLookup.pm'        => '$(INST_LIBDIR)/Business::USPS::WebTools::CityStateLookup.3',
 		},
 
 	clean  => { FILES    => q|Business-USPS-WebTools-*| },
