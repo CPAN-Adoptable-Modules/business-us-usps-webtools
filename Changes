@@ -1,0 +1,6 @@
+0.10 - Sat Sep 16 03:42:40 2006
+	* This is the initial release of a group of modules which
+	implement the web services of the US Postal Service. This
+	isn't screen scraping!
+	* See http://www.usps.com/webtools/
+
