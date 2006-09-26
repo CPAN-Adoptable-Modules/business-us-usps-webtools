@@ -5,13 +5,26 @@
 # the test requirements. The headings ( "Good response #1", etc )
 # correspond to the USPS test specification
 
-use Test::More tests => 109;
+use Test::More;
 
 my $class  = "Business::US::USPS::WebTools::ZipCodeLookup";
 my $method = 'lookup_zipcode';
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+unless( $ENV{USPS_WEBTOOLS_USERID} and $ENV{USPS_WEBTOOLS_PASSWORD} )
+	{
+	plan skip_all => 
+	"You must set the USPS_WEBTOOLS_USERID and USPS_WEBTOOLS_PASSWORD " .
+	"environment variables to run these tests\n";
+	}
+else
+	{
+	plan tests => 109;
+	}
+	
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 use_ok( $class );
-
+	
 my $verifier = $class->new( {
 	UserID   => $ENV{USPS_WEBTOOLS_USERID},
 	Password => $ENV{USPS_WEBTOOLS_PASSWORD},

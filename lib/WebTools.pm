@@ -7,15 +7,17 @@ use Carp qw(croak);
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.10_01';
+$VERSION = '0.10_02';
 
 =head1 NAME
 
-Business::USPS::WebTools - This is the description
+Business::US::USPS::WebTools - Use the US Postal Service Web Tools
 
 =head1 SYNOPSIS
 
-	use Business::USPS::WebTools;
+	use Business::US::USPS::WebTools;
+	
+	# see subclasses for API details
 
 =head1 DESCRIPTION
 
@@ -27,7 +29,7 @@ parts common to all of them: making the request, getting the response,
 parsing error reponses, and so on. The interesting stuff happens in
 one of the subclasses which implement a particular service. So far,
 the only subclass in this distribution is 
-C<Business::USPS::WebTools::AddressVerification>.
+C<Business::US::USPS::WebTools::AddressVerification>.
 
 =over
 

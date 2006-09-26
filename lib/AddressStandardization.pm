@@ -7,17 +7,17 @@ use base qw(Business::US::USPS::WebTools);
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.10_01';
+$VERSION = '0.10_02';
 
 =head1 NAME
 
-Business::USPS::WebTools::AddressStandardization - canonicalize a US address
+Business::US::USPS::WebTools::AddressStandardization - canonicalize a US address
 
 =head1 SYNOPSIS
 
-	use Business::USPS::WebTools::AddressStandardization;
+	use Business::US::USPS::WebTools::AddressStandardization;
 
-	my $verifier = Business::USPS::WebTools::AddressStandardization->new( {
+	my $verifier = Business::US::USPS::WebTools::AddressStandardization->new( {
 		UserID   => $ENV{USPS_WEBTOOLS_USERID},
 		Password => $ENV{USPS_WEBTOOLS_PASSWORD},
 		Testing  => 1,
@@ -49,7 +49,7 @@ Business::USPS::WebTools::AddressStandardization - canonicalize a US address
 *** THIS IS ALPHA SOFTWARE ***
 
 This module implements the Address Standardization web service from the
-US Postal Service. It is a subclass of Business::USPS::WebTools.
+US Postal Service. It is a subclass of Business::US::USPS::WebTools.
 
 =cut
 
@@ -79,7 +79,7 @@ will be the empty string, and the error flag is set. Check is with C<is_error>:
 
 	$verifier->is_error;
 	
-See the C<is_error> documentation in Business::USPS::WebTools for more
+See the C<is_error> documentation in Business::US::USPS::WebTools for more
 details on error information.
 	
 =cut
@@ -142,7 +142,7 @@ sub _parse_response
 
 =head1 SEE ALSO
 
-L<Business::USPS::WebTools>
+L<Business::US::USPS::WebTools>
 
 The WebTools API is documented on the US Postal Service's website:
 

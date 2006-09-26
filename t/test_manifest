@@ -1,5 +1,5 @@
 # $Id$
-env.t
+#env.t
 load.t
 pod.t
 pod_coverage.t

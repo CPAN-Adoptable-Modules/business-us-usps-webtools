@@ -5,11 +5,24 @@
 # the test requirements. The headings ( "Good response #1", etc )
 # correspond to the USPS test specification
 
-use Test::More tests => 50;
+use Test::More;
 
 my $class  = "Business::US::USPS::WebTools::CityStateLookup";
 my $method = 'lookup_city_state';
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+unless( $ENV{USPS_WEBTOOLS_USERID} and $ENV{USPS_WEBTOOLS_PASSWORD} )
+	{
+	plan skip_all => 
+	"You must set the USPS_WEBTOOLS_USERID and USPS_WEBTOOLS_PASSWORD " .
+	"environment variables to run these tests\n";
+	}
+else
+	{
+	plan tests => 50;
+	}
+	
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 use_ok( $class );
 
 my $verifier = $class->new( {

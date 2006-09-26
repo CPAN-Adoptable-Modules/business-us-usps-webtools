@@ -9,7 +9,9 @@ use_ok( $class );
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 {
 my $webtools = $class->new( {
-	Testing => 1,
+	UserID   => 'fake_user',
+	Password => "this won't work",
+	Testing  => 1,
 	} );
 	
 ok( $webtools->_testing, "I think I'm testing" );
@@ -22,6 +24,8 @@ is( $webtools->_api_path, "/ShippingAPITest.dll", "Testing path is right" );
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 {
 my $webtools = $class->new( {
+	UserID   => 'fake_user',
+	Password => "this won't work",
 	Testing => 0,
 	} );
 	
@@ -36,20 +40,9 @@ is( $webtools->_api_path, "/ShippingAPI.dll", "Testing path is right" );
 # Passing empty hash
 {
 my $webtools = $class->new( {
+	UserID   => 'fake_user',
+	Password => "this won't work",
 	} );
-	
-ok( $webtools->_live, "I think I'm live" );
-
-is( ! $webtools->_testing, 1, "I don't think I'm testing!" );
-is( $webtools->_api_host, "production.shippingapis.com", "Live host is right" );
-is( $webtools->_api_path, "/ShippingAPI.dll", "Testing path is right" );
-}
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-# Passing nothing
-{
-my $webtools = $class->new();
 	
 ok( $webtools->_live, "I think I'm live" );
 

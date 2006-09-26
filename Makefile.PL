@@ -31,3 +31,17 @@ WriteMakefile(
 	clean  => { FILES    => q|Business-*| },
 
 	);
+
+print <<"HERE" unless( $ENV{USPS_WEBTOOLS_USERID} and $ENV{USPS_WEBTOOLS_PASSWORD} );
+----------------------------------------------------------------------------
+
+To use these modules, you need a User ID and Password from the US Postal
+Service. See the USPS website for details:
+
+http://www.usps.com/webtools/htm/Address-Information.htm
+
+Set the USPS_WEBTOOLS_USERID and USPS_WEBTOOLS_PASSWORD environment
+variables.
+
+----------------------------------------------------------------------------
+HERE

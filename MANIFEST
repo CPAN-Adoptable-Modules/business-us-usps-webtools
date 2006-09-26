@@ -1,4 +1,6 @@
+Changes
 examples/address_standardization.pl
+examples/zip_code_lookup.pl
 lib/AddressStandardization.pm
 lib/CityStateLookup.pm
 lib/WebTools.pm
@@ -8,10 +10,10 @@ MANIFEST			This list of files
 README
 t/address_verification.t
 t/city_state_lookup.t
-t/env.t
 t/load.t
 t/pod.t
 t/pod_coverage.t
 t/prereq.t
 t/test_manifest
+t/test_or_live.t
 t/zip_code_lookup.t
