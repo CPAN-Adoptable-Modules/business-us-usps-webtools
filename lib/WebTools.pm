@@ -1,5 +1,5 @@
 # $Id$
-package Business::USPS::WebTools;
+package Business::US::USPS::WebTools;
 use strict;
 
 use Carp qw(croak);
@@ -33,7 +33,7 @@ C<Business::USPS::WebTools::AddressVerification>.
 
 =cut
 
-my $LiveServer = "testing.shippingapis.com";
+my $LiveServer = "production.shippingapis.com";
 my $TestServer = "testing.shippingapis.com";
 
 =item new( ANONYMOUS_HASH )
@@ -48,6 +48,10 @@ If you don't pass the UserID or Password entries, C<new> looks in the
 environment variables USPS_WEBTOOLS_USERID and USPS_WEBTOOLS_PASSWORD.
 
 If C<new> cannot find both the User ID and the Password, it croaks.
+
+If you pass a true value with the Testing key, the object will use the
+testing server host name and the testing URL path. If the Testing key
+is false or not present, the object uses the live server details.
 
 =cut
 
@@ -98,7 +102,7 @@ output for inconsistent responses from different physical servers.
 sub userid   { $_[0]->{UserID} }
 sub password { $_[0]->{Password} }
 
-sub url      { $_[0]->{url}      }
+sub url      { $_[0]->{url} || $_[0]->_make_url }
 sub response { $_[0]->{response} }
 
 sub _api_host
@@ -110,7 +114,14 @@ sub _api_host
 	else                  { die "Am I testing or live?" }
 	}
 
-sub _api_path { "/ShippingAPITest.dll" }
+sub _api_path { 
+	$_[0]->_live ? 
+		"/ShippingAPI.dll" 
+			:
+		"/ShippingAPITest.dll"
+		}
+
+sub _make_query_string { '' }
 
 sub _make_url
 	{

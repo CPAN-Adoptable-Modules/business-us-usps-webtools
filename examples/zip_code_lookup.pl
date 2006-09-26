@@ -1,20 +1,18 @@
 #!/usr/bin/perl
 
-use Business::US::USPS::WebTools::AddressStandardization;
+use Business::US::USPS::WebTools::ZipCodeLookup;
 
-my $verifier = Business::US::USPS::WebTools::AddressStandardization->new( {
+my $verifier = Business::US::USPS::WebTools::ZipCodeLookup->new( {
 	UserID   => $ENV{USPS_WEBTOOLS_USERID},
 	Password => $ENV{USPS_WEBTOOLS_PASSWORD},
 #	Testing  => 1,
 	} );
 
-my $address1 = prompt( "Address1" );
 my $address2 = prompt( "Address2" );
 my $city     = prompt( "City" );
 my $state    = prompt( "State" );
-my $zip5     = prompt( "Zip Code" );
 
-my $hash = $verifier->verify_address(
+my $hash = $verifier->lookup_zipcode(
 	FirmName => '',
 	Address1 => $address1,
 	Address2 => $address2,

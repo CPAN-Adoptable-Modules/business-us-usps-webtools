@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 eval "use Test::Manifest 1.14";
 
 WriteMakefile(
-	'NAME'	       => 'Business::USPS::WebTools',
+	'NAME'	       => 'Business::US::USPS::WebTools',
 	'VERSION_FROM' => 'lib/WebTools.pm',
 
 	'PREREQ_PM'    => {
@@ -22,12 +22,12 @@ WriteMakefile(
 		},
 
 	'MAN3PODS'     => {
-		'lib/WebTools.pm'               => '$(INST_MAN3DIR)/Business::USPS::WebTools.3',
-		'lib/AddressStandardization.pm' => '$(INST_LIBDIR)/Business::USPS::WebTools::AddressStandardization.3',
-		'lib/ZipCodeLookup.pm'          => '$(INST_LIBDIR)/Business::USPS::WebTools::ZipCodeLookup.3',
-		'lib/CityStateLookup.pm'        => '$(INST_LIBDIR)/Business::USPS::WebTools::CityStateLookup.3',
+		'lib/WebTools.pm'               => '$(INST_MAN3DIR)/Business::US::USPS::WebTools.3',
+		'lib/AddressStandardization.pm' => '$(INST_LIBDIR)/Business::US::USPS::WebTools::AddressStandardization.3',
+		'lib/ZipCodeLookup.pm'          => '$(INST_LIBDIR)/Business::US::USPS::WebTools::ZipCodeLookup.3',
+		'lib/CityStateLookup.pm'        => '$(INST_LIBDIR)/Business::US::USPS::WebTools::CityStateLookup.3',
 		},
 
-	clean  => { FILES    => q|Business-USPS-WebTools-*| },
+	clean  => { FILES    => q|Business-*| },
 
 	);

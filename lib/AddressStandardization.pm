@@ -1,8 +1,8 @@
 # $Id$
-package Business::USPS::WebTools::AddressStandardization;
+package Business::US::USPS::WebTools::AddressStandardization;
 use strict;
 
-use base qw(Business::USPS::WebTools);
+use base qw(Business::US::USPS::WebTools);
 
 use subs qw();
 use vars qw($VERSION);

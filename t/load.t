@@ -1,10 +1,10 @@
 # $Id$
 BEGIN {
 	@classes = qw(
-		Business::USPS::WebTools
-		Business::USPS::WebTools::AddressStandardization
-		Business::USPS::WebTools::ZipCodeLookup
-		Business::USPS::WebTools::CityStateLookup
+		Business::US::USPS::WebTools
+		Business::US::USPS::WebTools::AddressStandardization
+		Business::US::USPS::WebTools::ZipCodeLookup
+		Business::US::USPS::WebTools::CityStateLookup
 		);
 	}
 

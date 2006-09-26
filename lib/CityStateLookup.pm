@@ -1,8 +1,8 @@
 # $Id$
-package Business::USPS::WebTools::CityStateLookup;
+package Business::US::USPS::WebTools::CityStateLookup;
 use strict;
 
-use base qw(Business::USPS::WebTools);
+use base qw(Business::US::USPS::WebTools);
 
 use subs qw();
 use vars qw($VERSION);

@@ -7,7 +7,7 @@
 
 use Test::More tests => 50;
 
-my $class  = "Business::USPS::WebTools::CityStateLookup";
+my $class  = "Business::US::USPS::WebTools::CityStateLookup";
 my $method = 'lookup_city_state';
 
 use_ok( $class );

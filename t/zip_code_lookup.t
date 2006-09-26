@@ -7,7 +7,7 @@
 
 use Test::More tests => 109;
 
-my $class  = "Business::USPS::WebTools::ZipCodeLookup";
+my $class  = "Business::US::USPS::WebTools::ZipCodeLookup";
 my $method = 'lookup_zipcode';
 
 use_ok( $class );

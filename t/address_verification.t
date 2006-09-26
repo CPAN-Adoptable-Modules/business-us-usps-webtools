@@ -7,7 +7,7 @@
 
 use Test::More tests => 111;
 
-my $class  = "Business::USPS::WebTools::AddressStandardization";
+my $class  = "Business::US::USPS::WebTools::AddressStandardization";
 my $method = 'verify_address';
 
 use_ok( $class );
