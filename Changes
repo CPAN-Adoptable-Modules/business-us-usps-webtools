@@ -4,6 +4,9 @@
 	isn't screen scraping!
 	* See http://www.usps.com/webtools/
 
+1.06 - Wed Jan 10 00:13:28 2007
+	* First official release :)
+
 0.10 - Tue Sep 26 16:21:58 2006
 	* Changed namespace to Business::US::USPS::*
 	* More docs to point out you need the USPS UserID to use any of this
