@@ -1,5 +1,6 @@
 Changes
 examples/address_standardization.pl
+examples/README
 examples/zip_code_lookup.pl
 lib/AddressStandardization.pm
 lib/CityStateLookup.pm

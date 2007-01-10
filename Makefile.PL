@@ -6,6 +6,7 @@ eval "use Test::Manifest 1.14";
 WriteMakefile(
 	'NAME'	       => 'Business::US::USPS::WebTools',
 	'VERSION_FROM' => 'lib/WebTools.pm',
+	'LICENSE'       => 'perl',
 
 	'PREREQ_PM'    => {
 		'Test::More'     => '0',
