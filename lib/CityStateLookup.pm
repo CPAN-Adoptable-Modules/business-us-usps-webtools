@@ -1,6 +1,7 @@
 # $Id$
 package Business::US::USPS::WebTools::CityStateLookup;
 use strict;
+no warnings 'uninitialized';
 
 use base qw(Business::US::USPS::WebTools);
 
@@ -91,7 +92,7 @@ sub lookup_city_state
 	
 sub _api_name { "CityStateLookup" }
 
-sub _make_query_string
+sub _make_query_xml
 	{
 	my( $self, $hash ) = @_;
 	
@@ -99,12 +100,10 @@ sub _make_query_string
 	my $pass = $self->password;
 	
 	my $xml = 
-		qq|API=| . $self->_api_name .
-		qq|&XML=<CityStateLookupRequest%20USERID="$user"%20PASSWORD="$pass">|  .
+		qq|<CityStateLookupRequest%20USERID="$user"%20PASSWORD="$pass">|  .
 		qq|<ZipCode ID="0"><Zip5>$$hash{Zip5}</Zip5>| .
 		qq|</ZipCode></CityStateLookupRequest>|;
 
-	$self->{query_string} = $xml;
 	}
 
 sub _parse_response

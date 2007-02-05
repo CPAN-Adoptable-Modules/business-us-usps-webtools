@@ -1,6 +1,7 @@
 # $Id$
 package Business::US::USPS::WebTools::AddressStandardization;
 use strict;
+no warnings 'uninitialized';
 
 use base qw(Business::US::USPS::WebTools);
 
@@ -98,7 +99,7 @@ sub verify_address
 	
 sub _api_name { "Verify" }
 
-sub _make_query_string
+sub _make_query_xml
 	{
 	my( $self, $hash ) = @_;
 	
@@ -106,8 +107,7 @@ sub _make_query_string
 	my $pass = $self->password;
 	
 	my $xml = 
-		qq|API=| . $self->_api_name .
-		qq|&XML=<AddressValidateRequest%20USERID="$user"%20PASSWORD="$pass">|  .
+		qq|<AddressValidateRequest%20USERID="$user"%20PASSWORD="$pass">|  .
 		qq|<Address ID="0">|;
 
 	foreach my $field ( $self->_fields )
@@ -117,7 +117,7 @@ sub _make_query_string
 
 	$xml .= qq|</Address></AddressValidateRequest>|;
 
-	$self->{query_string} = $xml;
+	return $xml;
 	}
 
 sub _parse_response
