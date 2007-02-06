@@ -131,9 +131,7 @@ sub _make_query_string
 	my( $self, $hash ) = @_;
 	
 	my $xml = $self->_make_query_xml( $hash );
-	
-	my $query = "API=" . $self->_api_name . '&XML=' . $xml;
-	
+		
 	my $uri = URI->new;
 	$uri->query_form( 
 		API => $self->_api_name,
@@ -141,8 +139,6 @@ sub _make_query_string
 		);
 		
 	$uri->query; # this should work, but doesn't
-	
-#	$query;
 	}
 	
 sub _make_url
