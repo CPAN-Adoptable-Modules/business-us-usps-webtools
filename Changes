@@ -4,6 +4,11 @@
 	isn't screen scraping!
 	* See http://www.usps.com/webtools/
 
+1.09 - Mon Feb  5 18:16:12 2007
+	* Jay Buffington noted I wasn't escaping the query strings
+	correctly (meaning, at all), so I fixed that.
+	* This is an important fix that everyone should upgrade too.
+
 1.06 - Wed Jan 10 00:13:28 2007
 	* First official release :)
 
