@@ -142,7 +142,7 @@ sub _make_query_string
 		
 	$uri->query; # this should work, but doesn't
 	
-	$query;
+#	$query;
 	}
 	
 sub _make_url

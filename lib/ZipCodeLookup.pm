@@ -99,7 +99,7 @@ sub _make_query_xml
 	my $pass = $self->password;
 	
 	my $xml = 
-		qq|<ZipCodeLookupRequest%20USERID="$user"%20PASSWORD="$pass">|  .
+		qq|<ZipCodeLookupRequest USERID="$user" PASSWORD="$pass">|  .
 		qq|<Address ID="0">|;
 
 	foreach my $field ( $self->_fields )

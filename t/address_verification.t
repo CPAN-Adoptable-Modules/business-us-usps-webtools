@@ -48,7 +48,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=<AddressValidateRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><Address ID="0"><FirmName></FirmName><Address1></Address1><Address2>6406 Ivy Lane</Address2><City>Greenbelt</City><State>MD</State><Zip5></Zip5><Zip4></Zip4></Address></AddressValidateRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=%3CAddressValidateRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CAddress+ID%3D%220%22%3E%3CFirmName%3E%3C%2FFirmName%3E%3CAddress1%3E%3C%2FAddress1%3E%3CAddress2%3E6406+Ivy+Lane%3C%2FAddress2%3E%3CCity%3EGreenbelt%3C%2FCity%3E%3CState%3EMD%3C%2FState%3E%3CZip5%3E%3C%2FZip5%3E%3CZip4%3E%3C%2FZip4%3E%3C%2FAddress%3E%3C%2FAddressValidateRequest%3E|,
 	"URL for Ivy Lane is correct",
 	);
 
@@ -88,7 +88,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=<AddressValidateRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><Address ID="0"><FirmName></FirmName><Address1></Address1><Address2>8 Wildwood Drive</Address2><City>Old Lyme</City><State>CT</State><Zip5>06371</Zip5><Zip4></Zip4></Address></AddressValidateRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=%3CAddressValidateRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CAddress+ID%3D%220%22%3E%3CFirmName%3E%3C%2FFirmName%3E%3CAddress1%3E%3C%2FAddress1%3E%3CAddress2%3E8+Wildwood+Drive%3C%2FAddress2%3E%3CCity%3EOld+Lyme%3C%2FCity%3E%3CState%3ECT%3C%2FState%3E%3CZip5%3E06371%3C%2FZip5%3E%3CZip4%3E%3C%2FZip4%3E%3C%2FAddress%3E%3C%2FAddressValidateRequest%3E|,
 	"URL for Wildwood Drive is correct",
 	);
 
@@ -128,7 +128,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=<AddressValidateRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><Address ID="0"><FirmName></FirmName><Address1></Address1><Address2>4411 Romlon Street</Address2><City>Beltsville</City><State>MD</State><Zip5></Zip5><Zip4></Zip4></Address></AddressValidateRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=%3CAddressValidateRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CAddress+ID%3D%220%22%3E%3CFirmName%3E%3C%2FFirmName%3E%3CAddress1%3E%3C%2FAddress1%3E%3CAddress2%3E4411+Romlon+Street%3C%2FAddress2%3E%3CCity%3EBeltsville%3C%2FCity%3E%3CState%3EMD%3C%2FState%3E%3CZip5%3E%3C%2FZip5%3E%3CZip4%3E%3C%2FZip4%3E%3C%2FAddress%3E%3C%2FAddressValidateRequest%3E|,
 	"URL for Romlan Street is correct",
 	);
 
@@ -168,7 +168,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=<AddressValidateRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><Address ID="0"><FirmName></FirmName><Address1></Address1><Address2>3527 Sharonwood Road Apt. 3C</Address2><City>Laurel</City><State>MD</State><Zip5></Zip5><Zip4></Zip4></Address></AddressValidateRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=%3CAddressValidateRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CAddress+ID%3D%220%22%3E%3CFirmName%3E%3C%2FFirmName%3E%3CAddress1%3E%3C%2FAddress1%3E%3CAddress2%3E3527+Sharonwood+Road+Apt.+3C%3C%2FAddress2%3E%3CCity%3ELaurel%3C%2FCity%3E%3CState%3EMD%3C%2FState%3E%3CZip5%3E%3C%2FZip5%3E%3CZip4%3E%3C%2FZip4%3E%3C%2FAddress%3E%3C%2FAddressValidateRequest%3E|,
 	"URL for Sharonwood Road is correct",
 	);
 
@@ -212,7 +212,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=<AddressValidateRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><Address ID="0"><FirmName></FirmName><Address1></Address1><Address2>3527 Sharonwood Road Apt. 3C</Address2><City>Wilmington</City><State>DE</State><Zip5></Zip5><Zip4></Zip4></Address></AddressValidateRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=%3CAddressValidateRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CAddress+ID%3D%220%22%3E%3CFirmName%3E%3C%2FFirmName%3E%3CAddress1%3E%3C%2FAddress1%3E%3CAddress2%3E3527+Sharonwood+Road+Apt.+3C%3C%2FAddress2%3E%3CCity%3EWilmington%3C%2FCity%3E%3CState%3EDE%3C%2FState%3E%3CZip5%3E%3C%2FZip5%3E%3CZip4%3E%3C%2FZip4%3E%3C%2FAddress%3E%3C%2FAddressValidateRequest%3E|,
 	"URL for Sharonwood Road Error is correct",
 	);
 
@@ -259,7 +259,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=<AddressValidateRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><Address ID="0"><FirmName></FirmName><Address1></Address1><Address2>1600 Pennsylvania Avenue</Address2><City>Washington</City><State>DC</State><Zip5></Zip5><Zip4></Zip4></Address></AddressValidateRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=%3CAddressValidateRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CAddress+ID%3D%220%22%3E%3CFirmName%3E%3C%2FFirmName%3E%3CAddress1%3E%3C%2FAddress1%3E%3CAddress2%3E1600+Pennsylvania+Avenue%3C%2FAddress2%3E%3CCity%3EWashington%3C%2FCity%3E%3CState%3EDC%3C%2FState%3E%3CZip5%3E%3C%2FZip5%3E%3CZip4%3E%3C%2FZip4%3E%3C%2FAddress%3E%3C%2FAddressValidateRequest%3E|,
 	"URL for Pennsylvania Avenue Error is correct",
 	);
 
@@ -308,7 +308,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=<AddressValidateRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><Address ID="0"><FirmName></FirmName><Address1></Address1><Address2>123 Main Street</Address2><City>Washington</City><State>ZZ</State><Zip5></Zip5><Zip4></Zip4></Address></AddressValidateRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=%3CAddressValidateRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CAddress+ID%3D%220%22%3E%3CFirmName%3E%3C%2FFirmName%3E%3CAddress1%3E%3C%2FAddress1%3E%3CAddress2%3E123+Main+Street%3C%2FAddress2%3E%3CCity%3EWashington%3C%2FCity%3E%3CState%3EZZ%3C%2FState%3E%3CZip5%3E%3C%2FZip5%3E%3CZip4%3E%3C%2FZip4%3E%3C%2FAddress%3E%3C%2FAddressValidateRequest%3E|,
 	"URL for Main Street Error is correct",
 	);
 
@@ -357,7 +357,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=<AddressValidateRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><Address ID="0"><FirmName></FirmName><Address1></Address1><Address2>123 Main Street</Address2><City>Trenton</City><State>NJ</State><Zip5></Zip5><Zip4></Zip4></Address></AddressValidateRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=Verify&XML=%3CAddressValidateRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CAddress+ID%3D%220%22%3E%3CFirmName%3E%3C%2FFirmName%3E%3CAddress1%3E%3C%2FAddress1%3E%3CAddress2%3E123+Main+Street%3C%2FAddress2%3E%3CCity%3ETrenton%3C%2FCity%3E%3CState%3ENJ%3C%2FState%3E%3CZip5%3E%3C%2FZip5%3E%3CZip4%3E%3C%2FZip4%3E%3C%2FAddress%3E%3C%2FAddressValidateRequest%3E|,
 	"URL for Trenton, NJ Error is correct",
 	);
 

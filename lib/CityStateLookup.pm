@@ -100,7 +100,7 @@ sub _make_query_xml
 	my $pass = $self->password;
 	
 	my $xml = 
-		qq|<CityStateLookupRequest%20USERID="$user"%20PASSWORD="$pass">|  .
+		qq|<CityStateLookupRequest USERID="$user" PASSWORD="$pass">|  .
 		qq|<ZipCode ID="0"><Zip5>$$hash{Zip5}</Zip5>| .
 		qq|</ZipCode></CityStateLookupRequest>|;
 

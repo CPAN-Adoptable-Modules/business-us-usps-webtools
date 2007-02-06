@@ -42,7 +42,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=<CityStateLookupRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><ZipCode ID="0"><Zip5>90210</Zip5></ZipCode></CityStateLookupRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=%3CCityStateLookupRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CZipCode+ID%3D%220%22%3E%3CZip5%3E90210%3C%2FZip5%3E%3C%2FZipCode%3E%3C%2FCityStateLookupRequest%3E|,
 	"URL for 90210 is correct",
 	);
 
@@ -72,7 +72,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=<CityStateLookupRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><ZipCode ID="0"><Zip5>20770</Zip5></ZipCode></CityStateLookupRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=%3CCityStateLookupRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CZipCode+ID%3D%220%22%3E%3CZip5%3E20770%3C%2FZip5%3E%3C%2FZipCode%3E%3C%2FCityStateLookupRequest%3E|,
 	"URL for 20770 is correct",
 	);
 
@@ -102,7 +102,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=<CityStateLookupRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><ZipCode ID="0"><Zip5>21113</Zip5></ZipCode></CityStateLookupRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=%3CCityStateLookupRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CZipCode+ID%3D%220%22%3E%3CZip5%3E21113%3C%2FZip5%3E%3C%2FZipCode%3E%3C%2FCityStateLookupRequest%3E|,
 	"URL for 21113 is correct",
 	);
 
@@ -132,7 +132,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=<CityStateLookupRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><ZipCode ID="0"><Zip5>21032</Zip5></ZipCode></CityStateLookupRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=%3CCityStateLookupRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CZipCode+ID%3D%220%22%3E%3CZip5%3E21032%3C%2FZip5%3E%3C%2FZipCode%3E%3C%2FCityStateLookupRequest%3E|,
 	"URL for 21032 is correct",
 	);
 
@@ -163,7 +163,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=<CityStateLookupRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><ZipCode ID="0"><Zip5>21117</Zip5></ZipCode></CityStateLookupRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=%3CCityStateLookupRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CZipCode+ID%3D%220%22%3E%3CZip5%3E21117%3C%2FZip5%3E%3C%2FZipCode%3E%3C%2FCityStateLookupRequest%3E|,
 	"URL for Sharonwood Road is correct",
 	);
 
@@ -197,7 +197,7 @@ my $url = $verifier->_make_url( {
 	} );
 is(
 	$url,
-	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=<CityStateLookupRequest%20USERID="$ENV{USPS_WEBTOOLS_USERID}"%20PASSWORD="$ENV{USPS_WEBTOOLS_PASSWORD}"><ZipCode ID="0"><Zip5>99999</Zip5></ZipCode></CityStateLookupRequest>|,
+	qq|http://testing.shippingapis.com/ShippingAPITest.dll?API=CityStateLookup&XML=%3CCityStateLookupRequest+USERID%3D%22$ENV{USPS_WEBTOOLS_USERID}%22+PASSWORD%3D%22$ENV{USPS_WEBTOOLS_PASSWORD}%22%3E%3CZipCode+ID%3D%220%22%3E%3CZip5%3E99999%3C%2FZip5%3E%3C%2FZipCode%3E%3C%2FCityStateLookupRequest%3E|,
 	"URL for Sharonwood Road Error is correct",
 	);
 
