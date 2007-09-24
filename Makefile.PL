@@ -7,6 +7,7 @@ WriteMakefile(
 	'NAME'	       => 'Business::US::USPS::WebTools',
 	'VERSION_FROM' => 'lib/WebTools.pm',
 	'LICENSE'       => 'perl',
+	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 
 	'PREREQ_PM'    => {
 		'Test::More'     => '0',
