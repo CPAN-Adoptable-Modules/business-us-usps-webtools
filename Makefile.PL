@@ -4,8 +4,9 @@ use ExtUtils::MakeMaker;
 eval "use Test::Manifest 1.14";
 
 WriteMakefile(
-	'NAME'	       => 'Business::US::USPS::WebTools',
-	'VERSION_FROM' => 'lib/WebTools.pm',
+	'NAME'	        => 'Business::US::USPS::WebTools',
+	'VERSION_FROM'  => 'lib/WebTools.pm',
+	'ABSTRACT'      => 'Use the US Postal Service Web Tools',
 	'LICENSE'       => 'perl',
 	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 
