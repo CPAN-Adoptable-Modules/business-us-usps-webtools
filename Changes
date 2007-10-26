@@ -4,6 +4,9 @@
 	isn't screen scraping!
 	* See http://www.usps.com/webtools/
 
+0.00 - Thu Oct 25 22:04:42 2007
+	* distro adjustments. no big whoop.
+
 1.09 - Mon Feb  5 18:16:12 2007
 	* Jay Buffington noted I wasn't escaping the query strings
 	correctly (meaning, at all), so I fixed that.
