@@ -1,6 +1,8 @@
 # $Id$
 use ExtUtils::MakeMaker;
 
+require 5.006;
+
 eval "use Test::Manifest 1.14";
 
 WriteMakefile(
@@ -15,6 +17,7 @@ WriteMakefile(
 		'Hash::AsObject' => '0',
 		'Test::Manifest' => 1.14,
 		'LWP::Simple'    => '0',
+		'URI'            => '0',
 		},
 
 	'PM'           => {
