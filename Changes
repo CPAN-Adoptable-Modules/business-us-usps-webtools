@@ -4,6 +4,11 @@
 	isn't screen scraping!
 	* See http://www.usps.com/webtools/
 
+1.11 - Sat Nov  3 00:49:12 2007
+	* cleanups to move from CVS to SVN
+	* now requires perl 5.6
+	* cleanups to the disto; no need to upgrade if you already have this
+
 0.00 - Thu Oct 25 22:04:42 2007
 	* distro adjustments. no big whoop.
 
