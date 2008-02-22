@@ -30,7 +30,7 @@ parts common to all of them: making the request, getting the response,
 parsing error reponses, and so on. The interesting stuff happens in
 one of the subclasses which implement a particular service. So far,
 the only subclass in this distribution is 
-C<Business::US::USPS::WebTools::AddressVerification>.
+C<Business::US::USPS::WebTools::AddressStandardization>.
 
 =over
 
