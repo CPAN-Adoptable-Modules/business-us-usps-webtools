@@ -1,4 +1,3 @@
-# $Id$
 package Business::US::USPS::WebTools;
 use strict;
 no warnings 'uninitialized';

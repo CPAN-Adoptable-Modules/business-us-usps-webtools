@@ -1,4 +1,3 @@
-# $Id$
 BEGIN {
 	@classes = qw(
 		Business::US::USPS::WebTools

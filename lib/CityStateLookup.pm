@@ -1,4 +1,3 @@
-# $Id$
 package Business::US::USPS::WebTools::CityStateLookup;
 use strict;
 no warnings 'uninitialized';

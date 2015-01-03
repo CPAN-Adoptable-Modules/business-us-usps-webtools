@@ -1,5 +1,3 @@
-# $Id$
-
 use Test::More 'no_plan';
 
 my $class = "Business::US::USPS::WebTools";

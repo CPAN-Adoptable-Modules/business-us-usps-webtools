@@ -1,5 +1,4 @@
 #!/usr/bin/perl
-# $Id$
 
 # See http://www.usps.com/webtools/htm/Address-Information.htm for
 # the test requirements. The headings ( "Good response #1", etc )

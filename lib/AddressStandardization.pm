@@ -1,4 +1,3 @@
-# $Id$
 package Business::US::USPS::WebTools::AddressStandardization;
 use strict;
 no warnings 'uninitialized';

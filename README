@@ -1,5 +1,3 @@
-$Id$
-
 This module provides a Perl interface to the US Postal Service's
 Web Tools service. You need a UserID and Password to use these
 services. See the Web Tools site for details:
