@@ -1,4 +1,4 @@
-# Changes to Business::US::USPS::WebTools
+Revision history for Perl module Business::US::USPS::WebTools
 
 1.11 - Sat Nov  3 00:49:12 2007
 	* cleanups to move from CVS to SVN
