@@ -1,8 +1,4 @@
-0.10 - Sat Sep 16 03:42:40 2006
-	* This is the initial release of a group of modules which
-	implement the web services of the US Postal Service. This
-	isn't screen scraping!
-	* See http://www.usps.com/webtools/
+# Changes to Business::US::USPS::WebTools
 
 1.11 - Sat Nov  3 00:49:12 2007
 	* cleanups to move from CVS to SVN
@@ -23,5 +19,11 @@
 0.10 - Tue Sep 26 16:21:58 2006
 	* Changed namespace to Business::US::USPS::*
 	* More docs to point out you need the USPS UserID to use any of this
+	* See http://www.usps.com/webtools/
+
+0.10 - Sat Sep 16 03:42:40 2006
+	* This is the initial release of a group of modules which
+	implement the web services of the US Postal Service. This
+	isn't screen scraping!
 	* See http://www.usps.com/webtools/
 
