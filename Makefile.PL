@@ -1,14 +1,15 @@
-require 5.006;
+require 5.008;
 use strict;
 use warnings;
 
-my $github    = 'https://github.com/briandfoy/';
-my $main_file = 'lib/';
+my $github    = 'https://github.com/briandfoy/business-us-usps-webtools';
+my $main_file = 'lib/Business/US/USPS/WebTools.pm';
 
 my %WriteMakefile = (
 	'NAME'	        => 'Business::US::USPS::WebTools',
-	'VERSION_FROM'  => 'lib/WebTools.pm',
-	'ABSTRACT_FROM' => $main_file;	'LICENSE'       => 'perl',
+	'VERSION_FROM'  => $main_file,
+	'ABSTRACT_FROM' => $main_file,
+	'LICENSE'       => 'perl',
 	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 
 	'CONFIGURE_REQUIRES' => {
@@ -23,6 +24,9 @@ my %WriteMakefile = (
 		},
 
 	'PREREQ_PM'     => {
+		'Hash::AsObject' => '0',
+		'LWP::Simple'    => '0',
+		'URI'            => '0',
 		},
 
 	'META_MERGE' => {
@@ -39,30 +43,8 @@ my %WriteMakefile = (
 			homepage => $github,
 			},
 		},
-	'PREREQ_PM'    => {
-		'Test::More'     => '0',
-		'Hash::AsObject' => '0',
-		'Test::Manifest' => 1.14,
-		'LWP::Simple'    => '0',
-		'URI'            => '0',
-		},
-
-	'PM'           => {
-		'lib/WebTools.pm'               => '$(INST_LIBDIR)/WebTools.pm',
-		'lib/AddressStandardization.pm' => '$(INST_LIBDIR)/WebTools/AddressStandardization.pm',
-		'lib/ZipCodeLookup.pm'          => '$(INST_LIBDIR)/WebTools/ZipCodeLookup.pm',
-		'lib/CityStateLookup.pm'        => '$(INST_LIBDIR)/WebTools/CityStateLookup.pm',
-		},
-
-	'MAN3PODS'     => {
-		'lib/WebTools.pm'               => '$(INST_MAN3DIR)/Business::US::USPS::WebTools.3',
-		'lib/AddressStandardization.pm' => '$(INST_LIBDIR)/Business::US::USPS::WebTools::AddressStandardization.3',
-		'lib/ZipCodeLookup.pm'          => '$(INST_LIBDIR)/Business::US::USPS::WebTools::ZipCodeLookup.3',
-		'lib/CityStateLookup.pm'        => '$(INST_LIBDIR)/Business::US::USPS::WebTools::CityStateLookup.3',
-		},
 
 	clean  => { FILES    => q|Business-*| },
-
 	);
 
 print <<"HERE" unless( $ENV{USPS_WEBTOOLS_USERID} and $ENV{USPS_WEBTOOLS_PASSWORD} );
