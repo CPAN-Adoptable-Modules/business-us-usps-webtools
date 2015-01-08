@@ -2,11 +2,28 @@ require 5.008;
 use strict;
 use warnings;
 
+print <<"HERE" unless( $ENV{USPS_WEBTOOLS_USERID} and $ENV{USPS_WEBTOOLS_PASSWORD} );
+----------------------------------------------------------------------------
+
+To use these modules, you need a User ID and Password from the US Postal
+Service. See the USPS website for details:
+
+http://www.usps.com/webtools/htm/Address-Information.htm
+
+Set the USPS_WEBTOOLS_USERID and USPS_WEBTOOLS_PASSWORD environment
+variables.
+
+----------------------------------------------------------------------------
+HERE
+
+use File::Spec::Functions qw(catfile);
+
+my $module    = 'Business::US::USPS::WebTools';
 my $github    = 'https://github.com/briandfoy/business-us-usps-webtools';
-my $main_file = 'lib/Business/US/USPS/WebTools.pm';
+my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
 my %WriteMakefile = (
-	'NAME'	        => 'Business::US::USPS::WebTools',
+	'NAME'	        => $module,
 	'VERSION_FROM'  => $main_file,
 	'ABSTRACT_FROM' => $main_file,
 	'LICENSE'       => 'perl',
@@ -46,20 +63,6 @@ my %WriteMakefile = (
 
 	clean  => { FILES    => q|Business-*| },
 	);
-
-print <<"HERE" unless( $ENV{USPS_WEBTOOLS_USERID} and $ENV{USPS_WEBTOOLS_PASSWORD} );
-----------------------------------------------------------------------------
-
-To use these modules, you need a User ID and Password from the US Postal
-Service. See the USPS website for details:
-
-http://www.usps.com/webtools/htm/Address-Information.htm
-
-Set the USPS_WEBTOOLS_USERID and USPS_WEBTOOLS_PASSWORD environment
-variables.
-
-----------------------------------------------------------------------------
-HERE
 
 sub arguments { \%WriteMakefile }
 
