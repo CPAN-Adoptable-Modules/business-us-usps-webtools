@@ -64,7 +64,7 @@ my %WriteMakefile = (
 			},
 		},
 
-	clean  => { FILES    => q|Business-*| },
+	clean => { FILES => "$dist-*" },
 	);
 
 sub arguments { \%WriteMakefile }
