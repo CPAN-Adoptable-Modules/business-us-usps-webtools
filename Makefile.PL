@@ -19,6 +19,8 @@ HERE
 use File::Spec::Functions qw(catfile);
 
 my $module    = 'Business::US::USPS::WebTools';
+( my $dist = $module ) =~ s/::/-/g;
+
 my $github    = 'https://github.com/briandfoy/business-us-usps-webtools';
 my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
