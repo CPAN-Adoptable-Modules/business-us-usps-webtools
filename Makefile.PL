@@ -1,4 +1,6 @@
 require 5.008;
+
+package Business::US::USPS::WebTools;
 use strict;
 use warnings;
 
@@ -18,7 +20,7 @@ HERE
 
 use File::Spec::Functions qw(catfile);
 
-my $module    = 'Business::US::USPS::WebTools';
+my $module    = __PACKAGE__;
 ( my $dist = $module ) =~ s/::/-/g;
 
 my $github    = 'https://github.com/briandfoy/business-us-usps-webtools';
