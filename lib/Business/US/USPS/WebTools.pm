@@ -9,6 +9,8 @@ use vars qw($VERSION);
 
 $VERSION = '1.11';
 
+=encoding utf8
+
 =head1 NAME
 
 Business::US::USPS::WebTools - Use the US Postal Service Web Tools
@@ -16,7 +18,7 @@ Business::US::USPS::WebTools - Use the US Postal Service Web Tools
 =head1 SYNOPSIS
 
 	use Business::US::USPS::WebTools;
-	
+
 	# see subclasses for API details
 
 =head1 DESCRIPTION
@@ -28,7 +30,7 @@ Service. The USPS offers several services, and this module handles the
 parts common to all of them: making the request, getting the response,
 parsing error reponses, and so on. The interesting stuff happens in
 one of the subclasses which implement a particular service. So far,
-the only subclass in this distribution is 
+the only subclass in this distribution is
 C<Business::US::USPS::WebTools::AddressStandardization>.
 
 =over
@@ -45,7 +47,7 @@ Make the web service object. Pass is an anonymous hash with these keys:
 	UserID		the user id provided by the USPS
 	Password	the password provided by the USPS
 	Testing		true or false, to select the right server
-	
+
 If you don't pass the UserID or Password entries, C<new> looks in the
 environment variables USPS_WEBTOOLS_USERID and USPS_WEBTOOLS_PASSWORD.
 
@@ -60,18 +62,18 @@ is false or not present, the object uses the live server details.
 sub new
 	{
 	my( $class, $args ) = @_;
-	
+
 	my $user_id = $args->{UserID} || $ENV{USPS_WEBTOOLS_USERID} ||
 		croak "No user ID for USPS WebTools!";
 
 	my $password = $args->{Password} || $ENV{USPS_WEBTOOLS_PASSWORD} ||
 		croak "No password for USPS WebTools!";
-	
+
 	$args->{UserID}   = $user_id;
 	$args->{Password} = $password;
 	$args->{testing}  = $args->{Testing} || 0;
 	$args->{live}     = ! $args->{Testing};
-	
+
 	bless $args, $class;
 	}
 
@@ -80,12 +82,12 @@ sub _live    { $_[0]->{live}    }
 
 =item userid
 
-Returns the User ID for the web service. You need to get this from the 
+Returns the User ID for the web service. You need to get this from the
 US Postal Service.
 
 =item password
 
-Returns the Password for the web service. You need to get this from the 
+Returns the Password for the web service. You need to get this from the
 US Postal Service.
 
 =item url
@@ -110,15 +112,15 @@ sub response { $_[0]->{response} }
 sub _api_host
 	{
 	my $self = shift;
-	
+
 	if( $self->_testing ) { $TestServer }
 	elsif( $self->_live ) { $LiveServer }
 	else                  { die "Am I testing or live?" }
 	}
 
-sub _api_path { 
-	$_[0]->_live ? 
-		"/ShippingAPI.dll" 
+sub _api_path {
+	$_[0]->_live ?
+		"/ShippingAPI.dll"
 			:
 		"/ShippingAPITest.dll"
 		}
@@ -126,43 +128,43 @@ sub _api_path {
 sub _make_query_string
 	{
 	require URI;
-	
+
 	my( $self, $hash ) = @_;
-	
+
 	my $xml = $self->_make_query_xml( $hash );
-		
+
 	my $uri = URI->new;
-	$uri->query_form( 
+	$uri->query_form(
 		API => $self->_api_name,
 		XML => $xml,
 		);
-		
+
 	$uri->query; # this should work, but doesn't
 	}
-	
+
 sub _make_url
 	{
 	my( $self, $hash ) = @_;
-	
+
 	$self->{url} = qq|http://| . $self->_api_host . $self->_api_path .
 		"?" . $self->_make_query_string( $hash );
 	}
-	
+
 sub _make_request
 	{
 	my( $self, $url ) = @_;
 	require LWP::Simple;
-	
+
 	$self->{error} = undef;
-	
+
 	$self->{response} = LWP::Simple::get( $self->url );
 	$self->{response} =~ s/\015\012/\n/g;
 
 	$self->is_error;
-	
+
 	use Data::Dumper;
-#	print STDERR "In _make_request:\n" . Dumper( $self ) . "\n";	
-	
+#	print STDERR "In _make_request:\n" . Dumper( $self ) . "\n";
+
 	$self->{response};
 	}
 
@@ -174,10 +176,10 @@ otherwise.
 If the response was an error, this method sets various fields in the
 object:
 
-	$self->{error}{number}      
-	$self->{error}{source}      
-	$self->{error}{description} 
-	$self->{error}{help_file}   
+	$self->{error}{number}
+	$self->{error}{source}
+	$self->{error}{description}
+	$self->{error}{help_file}
 	$self->{error}{help_context}
 
 =cut
@@ -185,25 +187,25 @@ object:
 sub is_error
 	{
 	my $self = shift;
-	
+
 	return 0 unless $self->response =~ "<Error>";
-	
+
 	$self->{error} = {};
-	
-	# Apparently not all servers return this string in the 
+
+	# Apparently not all servers return this string in the
 	# same way. Some have SOL and some have SoL
-	$self->{response} =~ s/SOLServer/SOLServer/ig; 
-	
+	$self->{response} =~ s/SOLServer/SOLServer/ig;
+
 	( $self->{error}{number}       ) = $self->response =~ m|<Number>(-?\d+)</Number>|g;
 	( $self->{error}{source}       ) = $self->response =~ m|<Source>(.*?)</Source>|g;
 	( $self->{error}{description}  ) = $self->response =~ m|<Description>(.*?)</Description>|g;
 	( $self->{error}{help_file}    ) = $self->response =~ m|<HelpFile>(.*?)</HelpFile>|ig;
 	( $self->{error}{help_context} ) = $self->response =~ m|<HelpContext>(.*?)</HelpContext>|ig;
-	
+
 	1;
 	}
 
-=back	
+=back
 
 =head1 SEE ALSO
 

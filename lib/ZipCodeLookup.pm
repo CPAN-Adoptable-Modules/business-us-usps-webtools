@@ -9,6 +9,8 @@ use vars qw($VERSION);
 
 $VERSION = '1.11';
 
+=encoding utf8
+
 =head1 NAME
 
 Business::US::USPS::WebTools::ZipCodeLookup - lookup a Zip Code using the USPS Web Tools
@@ -22,7 +24,7 @@ Business::US::USPS::WebTools::ZipCodeLookup - lookup a Zip Code using the USPS W
 		Password => $ENV{USPS_WEBTOOLS_PASSWORD},
 		Testing  => 1,
 		} );
-		
+
 	my $hash = $looker_upper->lookup_zipcode(
 		);
 
@@ -32,11 +34,11 @@ Business::US::USPS::WebTools::ZipCodeLookup - lookup a Zip Code using the USPS W
 		}
 	else
 		{
-		print join "\n", map { "$_: $hash->{$_}" } 
+		print join "\n", map { "$_: $hash->{$_}" }
 			qw(FirmName Address1 Address2 City State Zip5 Zip4);
 		}
-		
-		
+
+
 =head1 DESCRIPTION
 
 *** THIS IS ALPHA SOFTWARE ***
@@ -63,41 +65,41 @@ directly from the USPS web service interface:
 	State		The two letter state abbreviation
 	Zip5		The 5 digit zip code
 	Zip4		The 4 digit extension to the zip code
-	
+
 It returns an anonymous hash with the same keys, but the values are
 the USPS's canonicalized address. If there is an error, the hash
 values will be the empty string, and the error flag is set. Check is
 with C<is_error>:
 
 	$verifier->is_error;
-	
+
 See the C<is_error> documentation in Business::US::USPS::WebTools for more
 details on error information.
-	
+
 =cut
 
 sub lookup_zipcode
 	{
 	my( $self, %hash ) = @_;
-	
+
 	$self->_make_url( \%hash );
-	
+
 	$self->_make_request;
-	
+
 	$self->_parse_response;
 	}
 
-	
+
 sub _api_name { "ZipCodeLookup" }
 
 sub _make_query_xml
 	{
 	my( $self, $hash ) = @_;
-	
+
 	my $user = $self->userid;
 	my $pass = $self->password;
-	
-	my $xml = 
+
+	my $xml =
 		qq|<ZipCodeLookupRequest USERID="$user" PASSWORD="$pass">|  .
 		qq|<Address ID="0">|;
 
@@ -115,15 +117,15 @@ sub _parse_response
 	{
 	my( $self ) = @_;
 	#require 'Hash::AsObject';
-	
+
 	my %hash = ();
 	foreach my $field ( $self->_fields, qw( Zip5 Zip4 ) )
 		{
 		my( $value ) = $self->response =~ m|<$field>(.*?)</$field>|g;
-		
+
 		$hash{$field} = $value || '';
 		}
-	
+
 	bless \%hash, ref $self; # 'Hash::AsObject';
 	}
 
