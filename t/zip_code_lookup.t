@@ -20,10 +20,6 @@ unless( $ENV{USPS_WEBTOOLS_USERID} and $ENV{USPS_WEBTOOLS_PASSWORD} )
 	"You must set the USPS_WEBTOOLS_USERID and USPS_WEBTOOLS_PASSWORD " .
 	"environment variables to run these tests\n";
 	}
-else
-	{
-	plan tests => 9;
-	}
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 my $verifier;
@@ -424,4 +420,4 @@ XML
 
 	};
 
-__END__
+done_testing();
