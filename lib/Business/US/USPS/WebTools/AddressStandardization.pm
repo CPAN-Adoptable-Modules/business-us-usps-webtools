@@ -2,7 +2,7 @@ package Business::US::USPS::WebTools::AddressStandardization;
 use strict;
 no warnings 'uninitialized';
 
-use base qw(Business::US::USPS::WebTools);
+use parent qw(Business::US::USPS::WebTools);
 
 use subs qw();
 use vars qw($VERSION);
