@@ -20,7 +20,7 @@ subtest testing => sub {
 	};
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-subtest not_testing => {
+subtest not_testing => sub {
 	my $webtools = $class->new( {
 		UserID   => 'fake_user',
 		Password => "this won't work",
