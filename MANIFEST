@@ -3,10 +3,10 @@ examples/address_standardization.pl
 examples/README
 examples/zip_code_lookup.pl
 INSTALL.SKIP
-lib/AddressStandardization.pm
 lib/Business/US/USPS/WebTools.pm
-lib/CityStateLookup.pm
-lib/ZipCodeLookup.pm
+lib/Business/US/USPS/WebTools/AddressStandardization.pm
+lib/Business/US/USPS/WebTools/CityStateLookup.pm
+lib/Business/US/USPS/WebTools/ZipCodeLookup.pm
 LICENSE
 Makefile.PL
 MANIFEST			This list of files
@@ -17,7 +17,6 @@ t/city_state_lookup.t
 t/load.t
 t/pod.t
 t/pod_coverage.t
-t/prereq.t
 t/test_manifest
 t/test_or_live.t
 t/zip_code_lookup.t
