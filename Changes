@@ -1,5 +1,9 @@
 Revision history for Perl module Business::US::USPS::WebTools
 
+1.12 2015-09-29T19:45:43Z
+	* Update for the latest API changes and test responses
+	* Get DeliveryPoint, CarrierRoute, and ReturnText fields
+
 1.11 - 2007-11-03
 	* cleanups to move from CVS to SVN
 	* now requires perl 5.6
