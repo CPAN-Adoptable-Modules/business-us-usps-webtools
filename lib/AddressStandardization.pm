@@ -80,8 +80,8 @@ It returns an anonymous hash with the same keys, but the values are
 the USPS's canonicalized address, plus three additional keys:
 
 	DeliveryPoint	The 2 digit extension to the ZIP+4 code
-        CarrierRoute	The 4 character postal carrier route
-        ReturnText	An error message when multiple addresses are found
+	CarrierRoute	The 4 character postal carrier route
+	ReturnText	An error message when multiple addresses are found
 
 If there is an error, the hash values will be the empty string, and
 the error flag is set. Check is with C<is_error>:
