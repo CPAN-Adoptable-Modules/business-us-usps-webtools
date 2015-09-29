@@ -42,7 +42,7 @@ Business::US::USPS::WebTools::AddressStandardization - canonicalize a US address
 	else
 		{
 		print join "\n", map { "$_: $hash->{$_}" }
-			qw(FirmName Address1 Address2 City State Zip5 Zip4);
+			qw(FirmName Address1 Address2 City State Zip5 Zip4 DeliveryPoint CarrierRoute ReturnText);
 		}
 
 
@@ -61,6 +61,7 @@ US Postal Service. It is a subclass of Business::US::USPS::WebTools.
 
 sub _fields   { qw( FirmName Address1 Address2 City State Zip5 Zip4 ) }
 sub _required { qw( Address2 City State ) }
+sub _response { (_fields(), qw( DeliveryPoint CarrierRoute ReturnText )) }
 
 =item verify_address( KEY, VALUE, ... )
 
@@ -72,12 +73,18 @@ directly from the USPS web service interface:
 	Address2	The street address
 	City		The name of the city
 	State		The two letter state abbreviation
-	Zip5		The 5 digit zip code
-	Zip4		The 4 digit extension to the zip code
+	Zip5		The 5 digit ZIP code
+	Zip4		The 4 digit extension to the ZIP code
 
 It returns an anonymous hash with the same keys, but the values are
-the USPS's canonicalized address. If there is an error, the hash values
-will be the empty string, and the error flag is set. Check is with C<is_error>:
+the USPS's canonicalized address, plus three additional keys:
+
+	DeliveryPoint	The 2 digit extension to the ZIP+4 code
+	CarrierRoute	The 4 character postal carrier route
+	ReturnText	An error message when multiple addresses are found
+
+If there is an error, the hash values will be the empty string, and
+the error flag is set. Check is with C<is_error>:
 
 	$verifier->is_error;
 
@@ -109,6 +116,8 @@ sub _make_query_xml
 
 	my $xml =
 		qq|<AddressValidateRequest USERID="$user" PASSWORD="$pass">|  .
+		qq|<IncludeOptionalElements>true</IncludeOptionalElements>|  .
+		qq|<ReturnCarrierRoute>true</ReturnCarrierRoute>|  .
 		qq|<Address ID="0">|;
 
 	foreach my $field ( $self->_fields )
@@ -127,7 +136,7 @@ sub _parse_response
 	#require 'Hash::AsObject';
 
 	my %hash = ();
-	foreach my $field ( $self->_fields )
+	foreach my $field ( $self->_response )
 		{
 		my( $value ) = $self->response =~ m|<$field>(.*?)</$field>|g;
 
