@@ -1,11 +1,12 @@
 Changes
 examples/address_standardization.pl
-examples/README
+examples/track.pl
 examples/zip_code_lookup.pl
 INSTALL.SKIP
 lib/Business/US/USPS/WebTools.pm
 lib/Business/US/USPS/WebTools/AddressStandardization.pm
 lib/Business/US/USPS/WebTools/CityStateLookup.pm
+lib/Business/US/USPS/WebTools/TrackConfirm.pm
 lib/Business/US/USPS/WebTools/ZipCodeLookup.pm
 LICENSE
 Makefile.PL
@@ -19,5 +20,6 @@ t/pod.t
 t/pod_coverage.t
 t/test_manifest
 t/test_or_live.t
+t/track_confirm.t
 t/zip_code_lookup.t
 xt/changes.t
