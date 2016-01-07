@@ -1,3 +1,6 @@
+use v5.10;
+use utf8;
+
 package Business::US::USPS::WebTools::CityStateLookup;
 use strict;
 no warnings 'uninitialized';

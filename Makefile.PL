@@ -58,7 +58,7 @@ my $github    = 'https://github.com/briandfoy/business-us-usps-webtools';
 my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
 my %WriteMakefile = (
-	'MIN_PERL_VERSION' => '5.008',
+	'MIN_PERL_VERSION' => '5.010',
 
 	'NAME'	        => $module,
 	'VERSION_FROM'  => $main_file,
