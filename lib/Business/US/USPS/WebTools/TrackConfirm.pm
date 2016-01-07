@@ -140,7 +140,7 @@ sub tracking_number_regex {
 	return $regex;
 	}
 
-=item valid_tracking_number( ID )
+=item is_valid_tracking_number( ID )
 
 Returns a normalized version of the tracking number if ID looks like a
 tracking number, based on the regex from C<tracking_number_regex>.
