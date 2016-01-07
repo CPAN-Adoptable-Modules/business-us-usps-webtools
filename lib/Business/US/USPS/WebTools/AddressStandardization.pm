@@ -93,8 +93,7 @@ details on error information.
 
 =cut
 
-sub verify_address
-	{
+sub verify_address {
 	my( $self, %hash ) = @_;
 
 	$self->_make_url( \%hash );
@@ -107,8 +106,7 @@ sub verify_address
 
 sub _api_name { "Verify" }
 
-sub _make_query_xml
-	{
+sub _make_query_xml {
 	my( $self, $hash ) = @_;
 
 	my $user = $self->userid;
@@ -120,8 +118,7 @@ sub _make_query_xml
 		qq|<ReturnCarrierRoute>true</ReturnCarrierRoute>|  .
 		qq|<Address ID="0">|;
 
-	foreach my $field ( $self->_fields )
-		{
+	foreach my $field ( $self->_fields ) {
 		$xml .= "<$field>$$hash{$field}</$field>";
 		}
 
@@ -130,14 +127,12 @@ sub _make_query_xml
 	return $xml;
 	}
 
-sub _parse_response
-	{
+sub _parse_response {
 	my( $self ) = @_;
 	#require 'Hash::AsObject';
 
 	my %hash = ();
-	foreach my $field ( $self->_response )
-		{
+	foreach my $field ( $self->_response ) {
 		my( $value ) = $self->response =~ m|<$field>(.*?)</$field>|g;
 
 		$hash{$field} = $value || '';

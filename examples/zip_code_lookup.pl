@@ -22,14 +22,12 @@ my $hash = $verifier->lookup_zipcode(
 	Zip4     => '',
 	);
 
-if( $verifier->is_error )
-	{
+if( $verifier->is_error ) {
 	warn "Oops!\n";
 	print $verifier->response;
 	print "\n";
 	}
-else
-	{
+else {
 	print <<"HERE";
 $hash->{FirmName}
 $hash->{Address1}
@@ -41,8 +39,7 @@ $hash->{Zip4}
 HERE
 	}
 
-sub prompt
-	{
+sub prompt {
 	my $prompt = shift;
 	
 	print "$prompt > ";

@@ -59,8 +59,7 @@ is false or not present, the object uses the live server details.
 
 =cut
 
-sub new
-	{
+sub new {
 	my( $class, $args ) = @_;
 
 	my $user_id = $args->{UserID} || $ENV{USPS_WEBTOOLS_USERID} ||
@@ -109,8 +108,7 @@ sub password { $_[0]->{Password} }
 sub url      { $_[0]->{url} || $_[0]->_make_url }
 sub response { $_[0]->{response} }
 
-sub _api_host
-	{
+sub _api_host {
 	my $self = shift;
 
 	if( $self->_testing ) { $TestServer }
@@ -125,8 +123,7 @@ sub _api_path {
 		"/ShippingAPITest.dll"
 		}
 
-sub _make_query_string
-	{
+sub _make_query_string {
 	require URI;
 
 	my( $self, $hash ) = @_;
@@ -142,16 +139,14 @@ sub _make_query_string
 	$uri->query; # this should work, but doesn't
 	}
 
-sub _make_url
-	{
+sub _make_url {
 	my( $self, $hash ) = @_;
 
 	$self->{url} = qq|http://| . $self->_api_host . $self->_api_path .
 		"?" . $self->_make_query_string( $hash );
 	}
 
-sub _make_request
-	{
+sub _make_request {
 	my( $self, $url ) = @_;
 	require LWP::Simple;
 
@@ -184,8 +179,7 @@ object:
 
 =cut
 
-sub is_error
-	{
+sub is_error {
 	my $self = shift;
 
 	return 0 unless $self->response =~ "<Error>";

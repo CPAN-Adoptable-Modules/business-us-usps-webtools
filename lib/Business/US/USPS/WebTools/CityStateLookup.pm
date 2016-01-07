@@ -79,8 +79,7 @@ details on error information.
 
 =cut
 
-sub lookup_city_state
-	{
+sub lookup_city_state {
 	my( $self, $zip_code ) = @_;
 
 	$self->_make_url( { Zip5 => $zip_code } );
@@ -93,8 +92,7 @@ sub lookup_city_state
 
 sub _api_name { "CityStateLookup" }
 
-sub _make_query_xml
-	{
+sub _make_query_xml {
 	my( $self, $hash ) = @_;
 
 	my $user = $self->userid;
@@ -107,14 +105,12 @@ sub _make_query_xml
 
 	}
 
-sub _parse_response
-	{
+sub _parse_response {
 	my( $self ) = @_;
 	#require 'Hash::AsObject';
 
 	my %hash = ();
-	foreach my $field ( $self->_fields )
-		{
+	foreach my $field ( $self->_fields ) {
 		my( $value ) = $self->response =~ m|<$field>(.*?)</$field>|g;
 
 		$hash{$field} = $value || '';
