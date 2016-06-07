@@ -1,5 +1,8 @@
 Revision history for Perl module Business::US::USPS::WebTools
 
+1.121 2016-06-07T19:29:22Z
+	* Bump to release version
+
 1.12_01 2016-01-07T04:27:51Z
 	* Add the Track & Confirm API
 
