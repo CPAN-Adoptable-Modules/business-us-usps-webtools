@@ -10,7 +10,7 @@ use parent qw(Business::US::USPS::WebTools);
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '1.12_01';
+$VERSION = '1.121';
 
 =encoding utf8
 
