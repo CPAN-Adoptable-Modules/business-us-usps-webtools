@@ -1,5 +1,9 @@
 Revision history for Perl module Business::US::USPS::WebTools
 
+1.122 2016-10-13T00:13:29Z
+	* Another release because the last one wasn't indexed. ADOPTME
+	has permissions on it.
+
 1.121 2016-06-07T19:29:22Z
 	* Bump to release version
 
