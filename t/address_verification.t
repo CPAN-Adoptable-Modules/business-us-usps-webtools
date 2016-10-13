@@ -105,7 +105,7 @@ subtest good_response_1 => sub {
 
 	my $expected = <<"XML";
 <?xml version="1.0" encoding="UTF-8"?>
-<AddressValidateResponse><Address ID="0"><Address2>8 WILDWOOD DR</Address2><City>OLD LYME</City><State>CT</State><Zip5>06371</Zip5><Zip4>1844</Zip4><DeliveryPoint>08</DeliveryPoint><CarrierRoute>R008</CarrierRoute></Address></AddressValidateResponse>
+<AddressValidateResponse><Address ID="0"><Address2>8 WILDWOOD DR</Address2><City>OLD LYME</City><State>CT</State><Zip5>06371</Zip5><Zip4>1844</Zip4><DeliveryPoint>08</DeliveryPoint><CarrierRoute>R010</CarrierRoute></Address></AddressValidateResponse>
 XML
 
 	$response =~ s/\s+\z//;
