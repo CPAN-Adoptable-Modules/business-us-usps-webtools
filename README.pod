@@ -31,17 +31,8 @@ name instead of the file location:
 
 	% perldoc Business::US::USPS::WebTools
 
-You can read the documentation and inspect the meta data on one of the
-CPAN web interfaces, such as L<CPAN Search|http://search.cpan.org/dist/Business-US-USPS-WebTools> or
-L<MetaCPAN|http://www.metacpan.org/module/Business::US::USPS::WebTools>:
-
-=over 4
-
-=item *	L<http://search.cpan.org/dist/Business-US-USPS-WebTools>
-
-=item *	L<http://www.metacpan.org/module/Business::US::USPS::WebTools>
-
-=back
+You can read the documentation and inspect the meta data at
+L<MetaCPAN|http://www.metacpan.org/module/Business::US::USPS::WebTools>.
 
 The standard module documentation has example uses in the SYNOPSIS
 section, but you can also look in the I<examples/> directory (if it's
