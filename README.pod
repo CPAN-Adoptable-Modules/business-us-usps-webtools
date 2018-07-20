@@ -10,7 +10,7 @@
 
 =for HTML <a href="https://github.com/briandfoy/business-us-usps-webtools/blob/master/LICENSE"><img src="https://img.shields.io/cpan/l/Business-US-USPS-WebTools.svg" /></a>
 
-=for HTML <a href="http://www.metacpan.org/module/Business::US::USPS::WebTools"><img src="https://img.shields.io/cpan/v/Business-US-USPS-WebTools.svg" /></A>
+=for HTML <a href="https://metacpan.org/pod/Business::US::USPS::WebTools"><img src="https://img.shields.io/cpan/v/Business-US-USPS-WebTools.svg" /></A>
 
 =head1 The Business::US::USPS::WebTools module
 
@@ -33,7 +33,7 @@ name instead of the file location:
 	% perldoc Business::US::USPS::WebTools
 
 You can read the documentation and inspect the meta data at
-L<MetaCPAN|https://www.metacpan.org/module/Business::US::USPS::WebTools>.
+L<MetaCPAN|https://metacpan.org/pod/Business::US::USPS::WebTools>.
 
 The standard module documentation has example uses in the SYNOPSIS
 section, but you can also look in the I<examples/> directory (if it's
