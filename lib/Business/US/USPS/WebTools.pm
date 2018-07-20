@@ -208,7 +208,7 @@ sub is_error {
 
 The WebTools API is documented on the US Postal Service's website:
 
-http://www.usps.com/webtools/htm/Address-Information.htm
+	http://www.usps.com/webtools/htm/Address-Information.htm
 
 =head1 SOURCE AVAILABILITY
 

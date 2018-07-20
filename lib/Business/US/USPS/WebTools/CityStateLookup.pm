@@ -132,7 +132,7 @@ L<Business::US::USPS::WebTools>
 
 The WebTools API is documented on the US Postal Service's website:
 
-https://www.usps.com/business/web-tools-apis/address-information-api.pdf
+	https://www.usps.com/business/web-tools-apis/address-information-api.pdf
 
 =head1 SOURCE AVAILABILITY
 

@@ -269,7 +269,7 @@ L<Business::US::USPS::WebTools>
 
 The WebTools API is documented on the US Postal Service's website:
 
-https://www.usps.com/business/web-tools-apis/track-and-confirm-api.htm
+	https://www.usps.com/business/web-tools-apis/track-and-confirm-api.htm
 
 =head1 SOURCE AVAILABILITY
 
