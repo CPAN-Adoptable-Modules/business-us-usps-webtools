@@ -160,7 +160,7 @@ The WebTools API is documented on the US Postal Service's website:
 
 This source is in GitHub:
 
-	https://github.com/briandfoy/business-us-usps-webtools
+	https://github.com/CPAN-Adoptable-Modules/business-us-usps-webtools
 
 =head1 AUTHOR
 

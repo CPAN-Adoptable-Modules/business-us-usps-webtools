@@ -54,7 +54,7 @@ use File::Spec::Functions qw(catfile);
 my $module    = __PACKAGE__;
 ( my $dist = $module ) =~ s/::/-/g;
 
-my $github    = 'https://github.com/briandfoy/business-us-usps-webtools';
+my $github    = 'https://github.com/CPAN-Adoptable-Modules/business-us-usps-webtools';
 my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
 my %WriteMakefile = (
