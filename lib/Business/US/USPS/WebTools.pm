@@ -160,6 +160,13 @@ sub _make_request {
 	$self->{response};
 	}
 
+sub _clone {
+	my $rc = require Storable;
+	my( $self ) = @_;
+
+	my $clone = Storable::dclone( $self );
+	}
+
 =item is_error
 
 Returns true if the response to the last request was an error, and false

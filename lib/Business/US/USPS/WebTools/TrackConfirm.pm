@@ -89,24 +89,24 @@ for more details on error information.
 sub track {
 	my( $self, %hash ) = @_;
 
-	say Dumper( \%hash ); use Data::Dumper;
+	my $clone = $self->_clone;
 
-	foreach my $field ( $self->_required ) {
+	foreach my $field ( $clone->_required ) {
 		next if exists $hash{$field};
 		carp "Missing field [$field] for track()";
 		return;
 		}
 
-	my $tracking_number = $self->is_valid_tracking_number( $hash{'TrackID'} );
+	my $tracking_number = $clone->is_valid_tracking_number( $hash{'TrackID'} );
 
 	unless( $tracking_number ) {
 		carp "String [$hash{'TrackID'}] does not look like a valid USPS tracking number";
 		return;
 		}
 
-	$self->_make_url( \%hash );
-	$self->_make_request;
-	$self->_parse_response;
+	$clone->_make_url( \%hash );
+	$clone->_make_request;
+	$clone->_parse_response;
 	}
 
 =item tracking_number_regex
