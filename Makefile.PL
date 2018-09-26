@@ -80,7 +80,7 @@ my %WriteMakefile = (
 
 	'PREREQ_PM'     => {
 		'Hash::AsObject' => '0',
-		'LWP::Simple'    => '0',
+		'Mojolicious'    => '7',
 		'URI'            => '0',
 		},
 

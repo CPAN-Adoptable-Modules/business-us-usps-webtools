@@ -30,17 +30,17 @@ Business::US::USPS::WebTools::TrackConfirm - track a shipment using the USPS Web
 		Testing  => 1,
 		} );
 
-	my $hash = $tracker->track(
-		);
+	my $array_of_hashes = $tracker->track( TrackID => $tracking_number );
 
-	if( $tracker->is_error )
-		{
+	if( $tracker->is_error ) {
 		warn "Oh No! $tracker->{error}{description}\n";
 		}
-	else
-		{
-		print join "\n", map { "$_: $hash->{$_}" }
-			qw(FirmName Address1 Address2 City State Zip5 Zip4);
+	else {
+		foreach my $hash ( reverse $hash->{TrackDetail}->@* ) {
+			say '-' x 50;
+			say join "\n", map { "$_: $hash->{$_}" }
+				qw(Event EventCity EventDate EventTime);
+			}
 		}
 
 
@@ -60,23 +60,28 @@ US Postal Service. It is a subclass of Business::US::USPS::WebTools.
 sub _fields   { qw( TrackID DestinationZipCode MailingDate ClientIp SourceId ) }
 sub _required { qw( TrackID ) }
 
-=item track( KEY, VALUE, ... )
+=item track( TrackID => VALUE )
 
-The C<track> method takes the following keys, which come
-directly from the USPS web service interface:
+Although the USPS API allows to make multiple queries in a single
+request, this method one queries only one.
+
+The C<track> method takes the following keys, which come directly from
+the USPS web service interface:
 
 	TrackID	  The tracking number
 
-It returns an anonymous hash with the data from the response. Although
-the USPS API allows to make multiple queries in a single request, this
-method one queries one.
+It returns an anonymous array of hashes with the data from the
+response. Each hash represents one step in the tracking and is blessed
+into L<Hash::AsObject>. The array is in reverse chronological order
+(so the oldest detail is the last element). The first element is the
+latest status (and is mostly the same as TrackSummary from the API).
 
 If you want to see if something went wrong, check:
 
 	$tracker->is_error;
 
-See the C<is_error> documentation in Business::US::USPS::WebTools for more
-details on error information.
+See the C<is_error> documentation in L<Business::US::USPS::WebTools>
+for more details on error information.
 
 =cut
 
@@ -100,9 +105,7 @@ sub track {
 		}
 
 	$self->_make_url( \%hash );
-
 	$self->_make_request;
-
 	$self->_parse_response;
 	}
 
@@ -222,27 +225,46 @@ sub _make_query_xml {
 
 	$xml .= qq|</TrackID></TrackFieldRequest>|;
 
-say "XML is\n$xml\n";
-
 	return $xml;
 	}
+
+=pod
+
+	<TrackSummary>
+	<EventTime>8:34 pm</EventTime>
+	<EventDate>September 25, 2018</EventDate>
+	<Event>Departed</Event>
+	<EventCity>NEWARK</EventCity>
+	<EventState /><EventZIPCode />
+	<EventCountry>UNITED STATES</EventCountry>
+	<FirmName />
+	<Name />
+	<AuthorizedAgent>false</AuthorizedAgent>
+	<EventCode>AT</EventCode>
+	</TrackSummary>"
+
+=cut
 
 sub _parse_response {
 	my( $self ) = @_;
 
-	my $response = $self->response;
+	my $res = $self->tx->result;
 
-	my( $summary ) = $response =~ m{<TrackSummary>(.*?)</TrackSummary>}s;
-	my @details    = $response =~  m{<TrackDetail>(.*?)</TrackDetail>}s;
+	my( $summary ) = $res->dom->at( 'TrackSummary' );
+	my $details    = $res->dom->find( 'TrackDetail' );
 
-	my %hash = ();
-	$hash{'TrackSummary'} = $summary;
-	$hash{'TrackDetail'}  = [ map { $self->_parse_subbits( $_ ) } @details ];
+	#my %hash = ();
+	#$hash{'TrackSummary'} = $summary->to_string;
 
-	bless \%hash, ref $self; # 'Hash::AsObject';
+	my $array  = $details->map(
+		sub { $self->_parse_subbits( $_ ) }
+		)->to_array;
+
+	bless $array, ref $self; # 'Hash::AsObject';
 	}
 
 sub _parse_subbits {
+	state $rc = require Hash::AsObject;
 	state $fields = [ qw(
 		EventTime EventDate Event EventCity EventState EventZIPCode
 		EventCountry FirmName Name AuthorizedAgent
@@ -252,12 +274,23 @@ sub _parse_subbits {
 
 	my %hash;
 	foreach my $field ( @$fields ) {
-		my( $value ) = $subbit =~ m|<$field>(.*?)</$field>|sg;
-		$hash{$field} = $value || '';
+		my( $value ) = $subbit->at( $field )->text;
+		$hash{$field} = $value // '';
 		}
 
-	return \%hash;
+	bless \%hash, 'Hash::AsObject';
 	}
+
+=item test_server_host
+
+The testing API uses stg-production.shippingapis.com instead of the
+usual testing server.
+
+=cut
+
+sub test_server_host { "stg-production.shippingapis.com" };
+sub _api_path { "/ShippingAPI.dll" }
+
 
 =back
 

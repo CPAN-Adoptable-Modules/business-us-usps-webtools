@@ -5,7 +5,7 @@ package Business::US::USPS::WebTools;
 use strict;
 no warnings 'uninitialized';
 
-use Carp qw(croak);
+use Carp qw(carp croak);
 
 use subs qw();
 use vars qw($VERSION);
@@ -40,9 +40,6 @@ C<Business::US::USPS::WebTools::AddressStandardization>.
 
 =cut
 
-my $LiveServer = "production.shippingapis.com";
-my $TestServer = "testing.shippingapis.com";
-
 =item new( ANONYMOUS_HASH )
 
 Make the web service object. Pass is an anonymous hash with these keys:
@@ -66,10 +63,10 @@ sub new {
 	my( $class, $args ) = @_;
 
 	my $user_id = $args->{UserID} || $ENV{USPS_WEBTOOLS_USERID} ||
-		croak "No user ID for USPS WebTools!";
+		croak "No user ID for USPS WebTools! Pass UserID or set the USPS_WEBTOOLS_USERID environment varaible.";
 
 	my $password = $args->{Password} || $ENV{USPS_WEBTOOLS_PASSWORD} ||
-		croak "No password for USPS WebTools!";
+		croak "No password for USPS WebTools! Pass Password or set the USPS_WEBTOOLS_PASSWORD environment variable.";
 
 	$args->{UserID}   = $user_id;
 	$args->{Password} = $password;
@@ -97,6 +94,10 @@ US Postal Service.
 Returns the URL for the request to the web service. So far, all requests
 are GET request with all of the data in the query string.
 
+=item tx
+
+Returns the transaction from the Mojo::UserAgent request.
+
 =item response
 
 Returns the response from the web service. This is the slightly modified
@@ -108,14 +109,15 @@ output for inconsistent responses from different physical servers.
 sub userid   { $_[0]->{UserID} }
 sub password { $_[0]->{Password} }
 
-sub url      { $_[0]->{url} || $_[0]->_make_url }
+sub url      { $_[0]->{url} || $_[0]->_make_url( $_[1] ) }
+sub tx       { $_[0]->{transaction} }
 sub response { $_[0]->{response} }
 
 sub _api_host {
 	my $self = shift;
 
-	if( $self->_testing ) { $TestServer }
-	elsif( $self->_live ) { $LiveServer }
+	if( $self->_testing ) { $self->test_server_host }
+	elsif( $self->_live ) { $self->live_server_host }
 	else                  { die "Am I testing or live?" }
 	}
 
@@ -126,37 +128,29 @@ sub _api_path {
 		"/ShippingAPITest.dll"
 		}
 
-sub _make_query_string {
-	require URI;
-
-	my( $self, $hash ) = @_;
-
-	my $xml = $self->_make_query_xml( $hash );
-
-	my $uri = URI->new;
-	$uri->query_form(
-		API => $self->_api_name,
-		XML => $xml,
-		);
-
-	$uri->query; # this should work, but doesn't
-	}
-
 sub _make_url {
+	state $rc = require Mojo::URL;
 	my( $self, $hash ) = @_;
 
-	$self->{url} = qq|http://| . $self->_api_host . $self->_api_path .
-		"?" . $self->_make_query_string( $hash );
+	$self->{url} = Mojo::URL->new
+		->scheme('http')
+		->host( $self->_api_host )
+		->path( $self->_api_path )
+		->query(
+			API => $self->_api_name,
+			XML => $self->_make_query_xml( $hash )
+			);
 	}
 
 sub _make_request {
 	my( $self, $url ) = @_;
-	require LWP::Simple;
+	state $rc = require Mojo::UserAgent;
+	state $ua = Mojo::UserAgent->new;
 
 	$self->{error} = undef;
 
-	$self->{response} = LWP::Simple::get( $self->url );
-	$self->{response} =~ s/\015\012/\n/g;
+	$self->{transaction} = $ua->get( $self->url );
+	$self->{response} = $self->{transaction}->result->body;
 
 	$self->is_error;
 
@@ -201,6 +195,22 @@ sub is_error {
 
 	1;
 	}
+
+=item live_server_host
+
+This is production.shippingapis.com. The modules choose this host
+when you have not set C<Testing> to a true value.
+
+=item test_server_host
+
+For most APIs, this is testing.shippingapis.com. The modules choose this host
+when you have set C<Testing> to a true value.
+
+=cut
+
+sub live_server_host { "production.shippingapis.com" };
+sub test_server_host { "testing.shippingapis.com" };
+
 
 =back
 
