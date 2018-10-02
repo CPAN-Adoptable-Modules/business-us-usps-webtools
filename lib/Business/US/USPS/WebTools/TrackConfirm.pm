@@ -12,7 +12,7 @@ use vars qw($VERSION);
 
 use Carp qw(croak carp);
 
-$VERSION = '1.122';
+$VERSION = '1.123';
 
 =encoding utf8
 
