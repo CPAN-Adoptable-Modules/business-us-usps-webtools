@@ -256,10 +256,13 @@ sub _parse_response {
 	#my %hash = ();
 	#$hash{'TrackSummary'} = $summary->to_string;
 
+	my $summary_parsed = $self->_parse_subbits( $summary );
+
 	my $array  = $details->map(
 		sub { $self->_parse_subbits( $_ ) }
 		)->to_array;
 
+	unshift @$array, $summary_parsed;
 	bless $array, ref $self; # 'Hash::AsObject';
 	}
 
