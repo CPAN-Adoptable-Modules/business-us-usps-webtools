@@ -277,7 +277,7 @@ sub _parse_subbits {
 
 	my %hash;
 	foreach my $field ( @$fields ) {
-		my( $value ) = $subbit->at( $field )->text;
+		my( $value ) = eval { $subbit->at( $field )->text };
 		$hash{$field} = $value // '';
 		}
 
